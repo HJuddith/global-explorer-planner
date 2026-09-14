@@ -1,0 +1,358 @@
+/* ==========================================================================
+   Layout — Mobile First
+   ========================================================================== */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding-top: var(--navbar-height);
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Navbar (Scroll Navbar)
+   -------------------------------------------------------------------------- */
+
+.navbar {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 100;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-inline: var(--space-sm);
+  background: color-mix(in srgb, var(--bg-surface) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition:
+    box-shadow var(--dur-med) var(--ease-standard),
+    border-color var(--dur-med) var(--ease-standard),
+    background-color var(--dur-med) var(--ease-standard);
+}
+
+.navbar--scrolled {
+  box-shadow: var(--shadow-sm);
+  border-bottom-color: var(--border-subtle);
+}
+
+.navbar__toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.navbar__toggle:hover {
+  background: var(--bg-surface-muted);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.navbar__brand-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  color: var(--color-gold);
+  filter: drop-shadow(0 2px 6px rgba(201, 162, 39, 0.25));
+  transition:
+    transform var(--dur-med) var(--ease-spring),
+    color var(--dur-med) var(--ease-standard),
+    filter var(--dur-med) var(--ease-standard);
+}
+
+.navbar__brand:hover .navbar__brand-mark {
+  transform: rotate(-15deg) scale(1.1);
+  color: var(--color-gold-light);
+  filter: drop-shadow(0 4px 12px rgba(201, 162, 39, 0.45));
+}
+
+.navbar__search {
+  display: none;
+}
+
+.navbar__actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+@media (min-width: 48rem) {
+  .navbar {
+    padding-inline: var(--space-md);
+  }
+
+  .navbar__search {
+    display: block;
+    flex: 1;
+    max-width: 24rem;
+    margin-inline-start: var(--space-md);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar (Tiroir mobile / Fixe desktop)
+   -------------------------------------------------------------------------- */
+
+.sidebar {
+  position: fixed;
+  top: var(--navbar-height);
+  bottom: 0;
+  left: 0;
+  width: min(80vw, 18rem);
+  transform: translateX(-100%);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+  padding: var(--space-md) var(--space-sm);
+  overflow-y: auto;
+  z-index: 90;
+  transition: transform var(--dur-slow) var(--ease-standard);
+}
+
+.sidebar.is-open {
+  transform: translateX(0);
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebar__backdrop {
+  position: fixed;
+  inset: var(--navbar-height) 0 0 0;
+  background: rgba(16, 31, 43, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-med) var(--ease-standard);
+  z-index: 80;
+}
+
+.sidebar__backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  width: 100%;
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.sidebar__link:hover {
+  background: var(--bg-surface-muted);
+  color: var(--text-primary);
+}
+
+.sidebar__link[aria-current="page"] {
+  background: var(--color-accent);
+  color: var(--text-on-accent);
+}
+
+.sidebar__icon {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.sidebar__label {
+  white-space: nowrap;
+}
+
+.sidebar__collapse {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .app-shell {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: var(--navbar-height);
+    height: calc(100dvh - var(--navbar-height));
+    transform: none;
+    width: var(--sidebar-width);
+    flex: none;
+    transition: width var(--dur-med) var(--ease-standard);
+  }
+
+  .sidebar.is-collapsed {
+    width: var(--sidebar-width-collapsed);
+  }
+
+  .sidebar.is-collapsed .sidebar__label,
+  .sidebar.is-collapsed .navbar__brand-text {
+    display: none;
+  }
+
+  .sidebar.is-collapsed .navbar__brand-mark {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .sidebar__backdrop {
+    display: none;
+  }
+
+  .navbar__toggle[data-toggle="sidebar"] {
+    display: none;
+  }
+
+  .sidebar__collapse {
+    display: flex;
+    margin-top: var(--space-md);
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    transition: background-color var(--dur-fast) var(--ease-standard);
+  }
+
+  .sidebar__collapse:hover {
+    background: var(--bg-surface-muted);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Zone principale
+   -------------------------------------------------------------------------- */
+
+.main-content {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  padding: var(--space-md) var(--space-sm) var(--space-xl);
+}
+
+@media (min-width: 48rem) {
+  .main-content {
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Vues (sections)
+   -------------------------------------------------------------------------- */
+
+.view {
+  animation: view-fade-in var(--dur-slow) var(--ease-standard);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view[hidden] {
+  display: none;
+}
+
+.view-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Grilles (CSS Grid)
+   -------------------------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  padding: var(--space-md);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  border-top: 1px solid var(--border-subtle);
+  width: 100%;
+  max-width: 100%;
+}
