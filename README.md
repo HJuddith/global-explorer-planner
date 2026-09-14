@@ -2,7 +2,7 @@
 
 **Dashboard voyageur** — SPA en **HTML5 / CSS3 / JavaScript ES6+ (Vanilla-js)**, sans framework ni build.
 
-> 🔗 **Démo :** _à compléter après déploiement_ · **Code :** _lien du dépôt_
+> 🔗 **Démo :** _à compléter après déploiement_ · **Code :** [_lien du dépôt_](https://github.com/HJuddith/global-explorer-planner)
 
 ![Aperçu](assets/cover.JPG)
 
