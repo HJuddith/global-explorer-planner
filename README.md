@@ -4,7 +4,7 @@
 
 > 🔗 **Démo :** _à compléter après déploiement_ · **Code :** _lien du dépôt_
 
-![Aperçu](assets/cover.jpg)
+![Aperçu](assets/cover.JPG)
 
 ---
 
