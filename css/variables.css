@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Global Explorer & Planner — Design Tokens
+   Palette : "Atlas Luxe" — encre profonde, ivoire, or, émeraude
+   ========================================================================== */
+
+:root {
+  /* --- Couleurs de base (mode clair) --- */
+  --color-ink-900: #0d1b2a;
+  --color-ink-800: #142433;
+  --color-ink-700: #1b2d3e;
+  --color-ink-500: #3a5266;
+  --color-paper-100: #faf8f3;
+  --color-paper-200: #f3efe6;
+  --color-paper-300: #e8e2d4;
+  --color-paper-400: #d9d1bd;
+
+  /* Or luxueux */
+  --color-gold: #c9a227;
+  --color-gold-light: #e8c547;
+  --color-gold-dark: #a07d1c;
+
+  /* Émeraude profonde */
+  --color-accent: #1a6b5a;
+  --color-accent-light: #2a8f7a;
+  --color-accent-dark: #0f4a3e;
+  --color-accent-contrast: #faf8f3;
+
+  /* Terracotta raffinée */
+  --color-stamp: #c96f3d;
+  --color-stamp-light: #e08a56;
+  --color-stamp-dark: #a05528;
+
+  --color-alert: #b6402f;
+  --color-success: #3c7a3e;
+
+  /* --- Rôles sémantiques --- */
+  --bg-body: var(--color-paper-100);
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-muted: var(--color-paper-200);
+  --bg-inverse: var(--color-ink-900);
+
+  --text-primary: var(--color-ink-900);
+  --text-secondary: #5a6b78;
+  --text-tertiary: #8a9aa8;
+  --text-inverse: var(--color-paper-100);
+  --text-on-accent: var(--color-accent-contrast);
+  --text-gold: var(--color-gold-dark);
+
+  --border-subtle: var(--color-paper-300);
+  --border-medium: var(--color-paper-400);
+  --border-strong: var(--color-ink-500);
+
+  --focus-ring: #0a5cff;
+
+  /* --- Typographie --- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-accent: "Fraunces", serif;
+
+  --fs-h1: clamp(2.2rem, 1.4rem + 3.5vw, 3.8rem);
+  --fs-h2: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --fs-h3: clamp(1.2rem, 1.05rem + 0.6vw, 1.55rem);
+  --fs-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.08rem);
+  --fs-small: 0.85rem;
+  --fs-caption: 0.75rem;
+
+  --lh-heading: 1.15;
+  --lh-body: 1.65;
+
+  /* --- Espacements --- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* --- Layout --- */
+  --sidebar-width: 17.5rem;
+  --sidebar-width-collapsed: 5rem;
+  --navbar-height: 4.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+
+  /* --- Ombres raffinées --- */
+  --shadow-xs: 0 1px 2px rgba(13, 27, 42, 0.04);
+  --shadow-sm: 0 2px 8px rgba(13, 27, 42, 0.06), 0 1px 2px rgba(13, 27, 42, 0.04);
+  --shadow-md: 0 8px 28px rgba(13, 27, 42, 0.10), 0 2px 8px rgba(13, 27, 42, 0.05);
+  --shadow-lg: 0 20px 50px rgba(13, 27, 42, 0.14), 0 8px 20px rgba(13, 27, 42, 0.06);
+  --shadow-xl: 0 30px 70px rgba(13, 27, 42, 0.18), 0 12px 30px rgba(13, 27, 42, 0.08);
+  --shadow-gold: 0 4px 20px rgba(201, 162, 39, 0.25);
+  --shadow-accent: 0 4px 20px rgba(26, 107, 90, 0.25);
+
+  /* --- Transitions --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-med: 320ms;
+  --dur-slow: 500ms;
+}
+
+/* --- Mode sombre : luxe nocturne --- */
+[data-theme="dark"] {
+  --bg-body: #0a1520;
+  --bg-surface: #101f2e;
+  --bg-surface-elevated: #16293a;
+  --bg-surface-muted: #1a2f42;
+  --bg-inverse: var(--color-paper-100);
+
+  --text-primary: #f0ece2;
+  --text-secondary: #a8b5c0;
+  --text-tertiary: #6d7f8d;
+  --text-inverse: var(--color-ink-900);
+  --text-gold: var(--color-gold-light);
+
+  --border-subtle: #1e3245;
+  --border-medium: #2a4055;
+  --border-strong: #4a6578;
+
+  --color-gold: #d4af37;
+  --color-gold-light: #e8c547;
+  --color-gold-dark: #b8962e;
+
+  --color-accent: #2a9d82;
+  --color-accent-light: #3dbfa0;
+  --color-accent-dark: #1a6b5a;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.65);
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.3);
+  --shadow-accent: 0 4px 20px rgba(42, 157, 130, 0.3);
+}
+
+/* --- Base Reset & Typography Application --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: var(--lh-heading);
+  color: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+    --dur-slow: 0ms;
+  }
+}
