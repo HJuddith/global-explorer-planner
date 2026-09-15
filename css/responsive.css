@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Ajustements responsives complémentaires
+   (l'essentiel du mobile-first vit dans layout.css / components.css)
+   ========================================================================== */
+
+/* Petits mobiles : resserrer les espacements */
+@media (max-width: 22.5rem) {
+  .main-content {
+    padding-inline: var(--space-2xs);
+  }
+
+  .hero {
+    padding: var(--space-md);
+  }
+}
+
+/* Tablette : deux colonnes pour les statistiques et formulaires */
+@media (min-width: 48rem) {
+  .checklist__form {
+    max-width: 28rem;
+  }
+}
+
+/* Desktop large : largeur de lecture confortable */
+@media (min-width: 90rem) {
+  .main-content {
+    max-width: 100rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+/* Ultra-wide (jusqu'à 1920px et au-delà) : éviter l'étirement excessif */
+@media (min-width: 120rem) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+/* Impression : version simplifiée */
+@media print {
+  .navbar,
+  .sidebar,
+  .sidebar__backdrop,
+  .btn,
+  dialog.modal {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+}
