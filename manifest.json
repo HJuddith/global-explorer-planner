@@ -1,0 +1,13 @@
+{
+  "name": "Global Explorer & Planner",
+  "short_name": "Explorer",
+  "description": "Planifiez et organisez vos voyages.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#c9a227",
+  "background_color": "#faf8f3",
+  "lang": "fr",
+  "icons": []
+}
