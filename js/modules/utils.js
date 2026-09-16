@@ -5,6 +5,30 @@
  */
 
 /* -------------------------------------------------------------------- */
+/* Drapeau emoji depuis code ISO                                         */
+/* -------------------------------------------------------------------- */
+
+/**
+ * Retourne l'emoji drapeau depuis un code ISO 2 lettres
+ * Note : ne s'affiche pas sur Windows (limitation système)
+ * @param {string} countryCode — ex: "JP"
+ * @returns {string} — emoji ou chaîne vide
+ */
+
+export function getFlagEmoji(countryCode) {
+  if (!countryCode || countryCode.length !== 2) return "";
+  const codePoints = countryCode
+    .toUpperCase()
+    .split("")
+    .map((c) => 127397 + c.charCodeAt(0));
+  try {
+    return String.fromCodePoint(...codePoints);
+  } catch {
+    return "";
+  }
+}
+
+/* -------------------------------------------------------------------- */
 /* Échappement HTML                                                      */
 /* -------------------------------------------------------------------- */
 
@@ -63,26 +87,3 @@ export function formatLongDate(iso) {
   });
 }
 
-
-/* -------------------------------------------------------------------- */
-/* Drapeau emoji depuis code ISO                                         */
-/* -------------------------------------------------------------------- */
-
-/**
- * Retourne l'emoji drapeau depuis un code ISO 2 lettres
- * Note : ne s'affiche pas sur Windows (limitation système)
- * @param {string} countryCode — ex: "JP"
- * @returns {string} — emoji ou chaîne vide
- */
-export function getFlagEmoji(countryCode) {
-  if (!countryCode || countryCode.length !== 2) return "";
-  const codePoints = countryCode
-    .toUpperCase()
-    .split("")
-    .map((c) => 127397 + c.charCodeAt(0));
-  try {
-    return String.fromCodePoint(...codePoints);
-  } catch {
-    return "";
-  }
-}
